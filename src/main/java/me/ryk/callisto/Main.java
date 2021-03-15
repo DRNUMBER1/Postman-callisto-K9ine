@@ -1,0 +1,33 @@
+package me.ryk.callisto;
+
+import me.ryk.callisto.proxy.CommonProxy;
+import me.ryk.callisto.util.Refrence;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+
+@Mod(modid = Refrence.MOD_ID, name = Refrence.NAME, version = Refrence.VERSION)
+public class Main {
+
+    @Mod.Instance
+    public Main instance;
+
+    @SidedProxy(clientSide = Refrence.CLIENT_PROXY_CLASS, serverSide = Refrence.COMMON_PROXY_CLASS)
+    public static CommonProxy proxy;
+
+    @Mod.EventHandler
+    public void PreInit (FMLPreInitializationEvent event) {
+
+    }
+
+    @Mod.EventHandler
+    public void init (FMLPreInitializationEvent event){
+        MinecraftForge.EVENT_BUS.register(instance);
+    }
+    @Mod.EventHandler
+    public void PostInit (FMLPreInitializationEvent event) {
+
+    }
+
+}
